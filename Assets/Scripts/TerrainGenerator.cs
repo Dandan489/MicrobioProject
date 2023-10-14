@@ -7,10 +7,9 @@ public class TerrainGenerator : MonoBehaviour
     private Transform player;
     private List<List<GameObject>> nearby = new List<List<GameObject>>();
     public List<GameObject> grass;
-    public int currentIndexX = 0;
-    public int currentIndexY = 0;
+    private int currentIndexX = 0;
+    private int currentIndexY = 0;
     public float size = 100f;
-    public float generateRange = 20f;
     private int pickLen;
 
     void Start()

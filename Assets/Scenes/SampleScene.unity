@@ -668,10 +668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grass:
   - {fileID: 3397271983848292893, guid: dff05b8e8813c9049a9cf63bac80ec10, type: 3}
-  currentIndexX: 0
-  currentIndexY: 0
   size: 100
-  generateRange: 20
 --- !u!1001 &831471638911058381
 PrefabInstance:
   m_ObjectHideFlags: 0
