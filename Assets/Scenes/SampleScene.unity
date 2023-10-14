@@ -667,7 +667,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grass:
-  - {fileID: 3397271983848292893, guid: dff05b8e8813c9049a9cf63bac80ec10, type: 3}
+  - {fileID: 21300000, guid: b76ed95c25a08ff409b16f53f1542b07, type: 3}
+  - {fileID: 21300000, guid: 1d0eefe2bf6e26140add9baa4f4d1292, type: 3}
+  - {fileID: 21300000, guid: 35c555b87843e1d46ba3dc341aae9915, type: 3}
+  defaultGrass: {fileID: 3397271983848292893, guid: dff05b8e8813c9049a9cf63bac80ec10, type: 3}
   size: 100
 --- !u!1001 &831471638911058381
 PrefabInstance:
