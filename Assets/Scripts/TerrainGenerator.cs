@@ -44,6 +44,7 @@ public class TerrainGenerator : MonoBehaviour
     
     void Update()
     {
+        Debug.Log(new Vector2(currentIndexX, currentIndexY));
         if (player.position.x >= size / 2 + size * currentIndexX)
         {
             GameObject.Destroy(nearby[0][0]);
@@ -58,6 +59,7 @@ public class TerrainGenerator : MonoBehaviour
             nearby[2][1] = nearby[2][2];
 
             currentIndexX++;
+            Debug.Log("hi");
 
             int pick = Random.Range(0, pickLen);
             GameObject newobject = GameObject.Instantiate(defaultGrass, new Vector3((currentIndexX + 1) * size, (currentIndexY + 1) * size, 0), Quaternion.identity, gameObject.transform);
@@ -88,6 +90,7 @@ public class TerrainGenerator : MonoBehaviour
             nearby[1][2] = nearby[0][2];
 
             currentIndexY++;
+            Debug.Log("hi");
 
             int pick = Random.Range(0, pickLen);
             GameObject newobject = GameObject.Instantiate(defaultGrass, new Vector3((currentIndexX - 1) * size, (currentIndexY + 1) * size, 0), Quaternion.identity, gameObject.transform);
@@ -118,20 +121,21 @@ public class TerrainGenerator : MonoBehaviour
             nearby[2][1] = nearby[2][0];
 
             currentIndexX--;
+            Debug.Log("hi");
 
             int pick = Random.Range(0, pickLen);
             GameObject newgrass = new GameObject();
-            GameObject newobject = GameObject.Instantiate(defaultGrass, new Vector3((currentIndexX + 1) * size, (currentIndexY + 1) * size, 0), Quaternion.identity, gameObject.transform);
+            GameObject newobject = GameObject.Instantiate(defaultGrass, new Vector3((currentIndexX - 1) * size, (currentIndexY + 1) * size, 0), Quaternion.identity, gameObject.transform);
             newobject.GetComponent<SpriteRenderer>().sprite = grass[pick];
             nearby[0][0] = newobject;
 
             pick = Random.Range(0, pickLen);
-            newobject = GameObject.Instantiate(defaultGrass, new Vector3((currentIndexX + 1) * size, (currentIndexY) * size, 0), Quaternion.identity, gameObject.transform);
+            newobject = GameObject.Instantiate(defaultGrass, new Vector3((currentIndexX - 1) * size, (currentIndexY) * size, 0), Quaternion.identity, gameObject.transform);
             newobject.GetComponent<SpriteRenderer>().sprite = grass[pick];
             nearby[1][0] = newobject;
 
             pick = Random.Range(0, pickLen);
-            newobject = GameObject.Instantiate(defaultGrass, new Vector3((currentIndexX + 1) * size, (currentIndexY - 1) * size, 0), Quaternion.identity, gameObject.transform);
+            newobject = GameObject.Instantiate(defaultGrass, new Vector3((currentIndexX - 1) * size, (currentIndexY - 1) * size, 0), Quaternion.identity, gameObject.transform);
             newobject.GetComponent<SpriteRenderer>().sprite = grass[pick];
             nearby[2][0] = newobject;
         }
@@ -149,6 +153,7 @@ public class TerrainGenerator : MonoBehaviour
             nearby[1][2] = nearby[2][2];
 
             currentIndexY--;
+            Debug.Log("hi");
 
             int pick = Random.Range(0, pickLen);
             GameObject newobject = GameObject.Instantiate(defaultGrass, new Vector3((currentIndexX - 1) * size, (currentIndexY - 1) * size, 0), Quaternion.identity, gameObject.transform);
