@@ -18,4 +18,10 @@ public class Player : Mover
         move = Vector3.Normalize(move) * speed * Time.fixedDeltaTime;
         UpdateMotor(move);
     }
+
+    protected override void Death()
+    {
+        base.Death();
+        Destroy(gameObject);
+    }
 }

@@ -18,4 +18,19 @@ public class Enemy : Mover
         dire = Vector3.Normalize(dire) * speed * Time.fixedDeltaTime;
         UpdateMotor(dire);
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (Time.time - lastHit >= atkSpeed && collision.tag == "Player")
+        {
+            collision.gameObject.GetComponent<Mover>().RecieveDamage(damage);
+            lastHit = Time.time;
+        }
+    }
+
+    protected override void Death()
+    {
+        base.Death();
+        Destroy(gameObject);
+    }
 }
