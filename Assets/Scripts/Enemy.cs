@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : Mover
 {
     private Transform target;
+    public GameObject exp;
 
     void Start()
     {
@@ -26,11 +27,16 @@ public class Enemy : Mover
             collision.gameObject.GetComponent<Mover>().RecieveDamage(damage);
             lastHit = Time.time;
         }
+        if (GameManager.instance.paused)
+        {
+            lastHit = Time.time;
+        }
     }
 
     protected override void Death()
     {
         base.Death();
+        Instantiate(exp, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

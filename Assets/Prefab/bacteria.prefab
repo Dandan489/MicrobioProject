@@ -255,3 +255,4 @@ MonoBehaviour:
   atkSpeed: 1
   speed: 0.1
   healthBar: {fileID: 0}
+  exp: {fileID: 6355100795455978849, guid: e1819980c6dfe144cb8045c768e2aecc, type: 3}

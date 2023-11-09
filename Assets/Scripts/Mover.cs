@@ -21,20 +21,26 @@ public class Mover : MonoBehaviour
 
     public void UpdateMotor(Vector3 movement)
     {
-        gameObject.transform.position += movement;
+        if (!GameManager.instance.paused)
+        {
+            gameObject.transform.position += movement;
+        }
     }
 
     public void RecieveDamage(float damageCount)
     {
-        health -= damageCount;
-        if (health <= 0)
+        if (!GameManager.instance.paused)
         {
-            Death();
-        }
+            health -= damageCount;
+            if (health <= 0)
+            {
+                Death();
+            }
 
-        if(gameObject.tag == "Player")
-        {
-            healthBar.transform.localScale = new Vector3(health / totalhealth, 0.45f, 1);
+            if (gameObject.tag == "Player")
+            {
+                healthBar.transform.localScale = new Vector3(health / totalhealth, 0.45f, 1);
+            }
         }
     }
 

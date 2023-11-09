@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
     
     void Update()
     {
-        if(Time.time - lastGenerateTime > generationInterval)
+        if(Time.time - lastGenerateTime > generationInterval && !GameManager.instance.paused)
         {
             Spawn();
             lastGenerateTime = Time.time;
