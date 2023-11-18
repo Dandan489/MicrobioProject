@@ -8,8 +8,8 @@ public class TerrainUpdater : MonoBehaviour
     public float xOffset;
     public float yOffset;
 
-    void Update()
+    public void IndexChange()
     {
-        transform.position = new Vector3 ((xOffset + tg.currentIndexX) * 2.88f, (yOffset + tg.currentIndexY) * 2.88f, 0);
+        transform.position = new Vector3((xOffset + tg.currentIndexX) * 2.88f, (yOffset + tg.currentIndexY) * 2.88f, 0);
     }
 }
