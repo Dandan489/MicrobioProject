@@ -26,6 +26,11 @@ public class EnemySpawner : MonoBehaviour
             Spawn();
             lastGenerateTime = Time.time;
         }
+
+        if(!GameManager.instance.paused && generationInterval > 0.5)
+        {
+            generationInterval -= (float)(Time.deltaTime * 0.001);
+        }
     }
 
     void Spawn()
@@ -39,8 +44,6 @@ public class EnemySpawner : MonoBehaviour
             deciderx = Random.Range(0f, 1f);
             decidery = Random.Range(0f, 1f);
         } while ((deciderx >= 0.33f && deciderx < 0.66f && decidery >= 0.33f && decidery < 0.66f));
-
-        Debug.Log(new Vector2(deciderx, decidery));
 
         if (deciderx >= 0.66f)
         {

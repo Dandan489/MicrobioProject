@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     public GameObject levelMenu;
 
     public Tentacle tenta;
-    public LightingControl lighting;
 
     private void Awake()
     {
@@ -41,7 +40,6 @@ public class GameManager : MonoBehaviour
         totalLevel = levelUp.Count;
 
         tenta.Enable();
-        lighting.Enable();
     }
 
     private void Update()
