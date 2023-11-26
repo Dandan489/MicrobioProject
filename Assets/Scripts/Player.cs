@@ -13,6 +13,7 @@ public class Player : Mover
 
     public Rigidbody2D tent;
     public Transform tentGO;
+
     void Start()
     {
         gameObject.transform.position = new Vector3(0, 0, 0);
@@ -49,6 +50,14 @@ public class Player : Mover
     protected override void Death()
     {
         base.Death();
-        Destroy(gameObject);
+        GameManager.instance.EndGame();
+        //Destroy(gameObject);
+    }
+
+    public void Restart(){
+        health = totalhealth;
+        lastHit=0f;
+        healthBar.transform.localScale = new Vector3(health / totalhealth, 0.45f, 1);
+        gameObject.transform.position = new Vector3(0, 0, 0);
     }
 }

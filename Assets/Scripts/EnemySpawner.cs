@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
 
     private int enemyLen;
     public GameObject parent;
+    public GameObject expParent;
 
     void Start()
     {
@@ -72,6 +73,15 @@ public class EnemySpawner : MonoBehaviour
             spawnLocation.y = player.position.y + Random.Range(1f, 2f) * 1.44f;
         }
         spawnLocation.z = 0;
-        GameObject.Instantiate(enemyList[pick], spawnLocation, Quaternion.identity, parent.transform);
+        GameObject newgo;
+        newgo = GameObject.Instantiate(enemyList[pick], spawnLocation, Quaternion.identity, parent.transform);
+        newgo.GetComponent<Enemy>().expParent = expParent.transform;
+    }
+
+    public void Restart(){
+        foreach(Transform child in transform){
+            GameObject.Destroy(child.gameObject);
+        }
+        lastGenerateTime=0f;
     }
 }

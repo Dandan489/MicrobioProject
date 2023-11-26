@@ -6,6 +6,7 @@ public class Enemy : Mover
 {
     private Transform target;
     public GameObject exp;
+    public Transform expParent;
 
     void Start()
     {
@@ -36,7 +37,7 @@ public class Enemy : Mover
     protected override void Death()
     {
         base.Death();
-        Instantiate(exp, transform.position, Quaternion.identity);
+        Instantiate(exp, transform.position, Quaternion.identity, expParent.transform);
         Destroy(gameObject);
     }
 }

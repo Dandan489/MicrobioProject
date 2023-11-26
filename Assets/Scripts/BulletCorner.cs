@@ -12,9 +12,6 @@ public class BulletCorner : Attacks
     public List<int> bulletcount = new List<int>();
     public float bulletspeed;
 
-    public TextMeshProUGUI levelText;
-    public TextMeshProUGUI levelUpText;
-
     private void Start()
     {
         levelText.text = (level + 1).ToString() + " / " + (maxLevel + 1).ToString();
@@ -42,6 +39,11 @@ public class BulletCorner : Attacks
         {
             updateButton.gameObject.SetActive(false);
         }
+    }
+
+    public override void Restart()
+    {
+        base.Restart();
     }
 
     private void Update()

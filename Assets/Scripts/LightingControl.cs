@@ -13,9 +13,6 @@ public class LightingControl : Attacks
     public List<GameObject> lightingGO = new List<GameObject>();
     public List<int> lightingCnt = new List<int>();
 
-    public TextMeshProUGUI levelText;
-    public TextMeshProUGUI levelUpText;
-
     private void Start()
     {
         levelText.text = (level + 1).ToString() + " / " + (maxLevel + 1).ToString();
@@ -52,6 +49,14 @@ public class LightingControl : Attacks
         if(level == maxLevel)
         {
             updateButton.gameObject.SetActive(false);
+        }
+    }
+
+    public override void Restart()
+    {
+        base.Restart();
+        foreach (Transform child in transform){
+            child.gameObject.SetActive(false);
         }
     }
 

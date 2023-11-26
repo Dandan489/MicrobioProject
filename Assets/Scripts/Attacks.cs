@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Attacks : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class Attacks : MonoBehaviour
     [SerializeField]
     protected GameObject updateButton;
 
+    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI levelUpText;
+
     public virtual void Enable()
     {
         enable = true;
@@ -26,5 +30,13 @@ public class Attacks : MonoBehaviour
     {
         if (level == maxLevel) return;
         level++;
+    }
+
+    public virtual void Restart(){
+        level = -1;
+        lastHit = 0f;
+        enable = false;
+        levelText.text = (level + 1).ToString() + " / " + (maxLevel + 1).ToString();
+        levelUpText.text = "Level: " + (level + 1).ToString() + " / " + (maxLevel + 1).ToString();
     }
 }

@@ -17,7 +17,7 @@ public class GasTrigger : MonoBehaviour
             collision.GetComponent<Mover>().RecieveDamage(TGC.damage[TGC.level]);
         }
     }
-
+    
     private void Update()
     {
         if (GameManager.instance.paused) return;

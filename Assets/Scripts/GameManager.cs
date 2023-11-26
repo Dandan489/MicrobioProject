@@ -16,13 +16,22 @@ public class GameManager : MonoBehaviour
     private bool maxedLevel = false;
 
     public float timer=0f;
+    private float besttime;
     public TextMeshProUGUI timerText;
     public bool paused = false;
 
     public GameObject pauseMenu;
     public GameObject levelMenu;
+    public GameObject EndMenu;
+
+    public EnemySpawner enemySpawner;
+    public ExpControl expCtrl;
+    public Player player;
 
     public Tentacle tenta;
+    public BulletCorner bultC;
+    public ToxicGasControl TGC;
+    public LightingControl LCtrl;
 
     private void Awake()
     {
@@ -115,5 +124,30 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         levelMenu.SetActive(true);
         paused = true;
+    }
+
+    public void EndGame(){
+        if(timer > besttime){
+            besttime = timer;
+        }
+        EndMenu.SetActive(true);
+        paused = true;
+    }
+
+    public void Restart(){
+        timer = 0f;
+        totalExp = 0f;
+        level = 0;
+        maxedLevel = false;
+        expBar.transform.localScale = new Vector3(totalExp / levelUp[level], 1, 1);
+        expText.text = "EXP:" + totalExp.ToString() + "/" + levelUp[level].ToString();
+        expCtrl.Restart();
+        enemySpawner.Restart();
+        player.Restart();
+        EndMenu.SetActive(false);
+        bultC.Restart();
+        LCtrl.Restart();
+        TGC.Restart();
+        paused = false;
     }
 }

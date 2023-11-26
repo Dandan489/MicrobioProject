@@ -13,21 +13,17 @@ public class ToxicGasControl : Attacks
     private float ReleaseInterval;
 
     public float lastTime;
-    [SerializeField]
-    private TextMeshProUGUI gasText;
-    [SerializeField]
-    private TextMeshProUGUI levelUpText;
 
     private void Start()
     {
-        gasText.text = (level + 1).ToString() + " / " + (maxLevel + 1).ToString();
+        levelText.text = (level + 1).ToString() + " / " + (maxLevel + 1).ToString();
         levelUpText.text = "Level: " + (level + 1).ToString() + " / " + (maxLevel + 1).ToString();
     }
 
     public override void Enable()
     {
         base.Enable();
-        gasText.text = (level + 1).ToString() + " / " + (maxLevel + 1).ToString();
+        levelText.text = (level + 1).ToString() + " / " + (maxLevel + 1).ToString();
         levelUpText.text = "Level: " + (level + 1).ToString() + " / " + (maxLevel + 1).ToString();
     }
 
@@ -39,12 +35,17 @@ public class ToxicGasControl : Attacks
             return;
         }
         base.LevelUp();
-        gasText.text = (level + 1).ToString() + " / " + (maxLevel + 1).ToString();
+        levelText.text = (level + 1).ToString() + " / " + (maxLevel + 1).ToString();
         levelUpText.text = "Level: " + (level + 1).ToString() + " / " + (maxLevel + 1).ToString();
         if(level == maxLevel)
         {
             updateButton.gameObject.SetActive(false);
         }
+    }
+
+    public override void Restart()
+    {
+        base.Restart();
     }
 
     private void Update()
